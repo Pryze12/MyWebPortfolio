@@ -104,6 +104,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
+
 /* Hero Section */
 .hero {
   max-width: 1100px;
@@ -160,13 +161,14 @@ body {
   }
 }
 
-/* Social */
+/* Socials container */
 .socials {
   display: flex;
   gap: 12px;
   margin-top: 18px;
 }
 
+/* Base style */
 .socials a {
   display: inline-flex;
   align-items: center;
@@ -178,35 +180,61 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.03);
   text-decoration: none;
   color: var(--muted);
-  transition: transform 0.18s;
+  transition: transform 0.18s, background 0.25s, color 0.25s;
 }
 
+/* Lift on hover */
 .socials a:hover {
   transform: translateY(-4px);
+  color: #fff; /* make the icon white for contrast */
 }
+
+/* Facebook hover */
+.socials a[aria-label="Facebook"]:hover {
+  background: #1877F2;
+}
+
+/* Instagram hover */
+.socials a[aria-label="Instagram"]:hover {
+  background: #E4405F;
+}
+
+/* GitHub hover */
+.socials a[aria-label="GitHub"]:hover {
+  background: #24292F;
+}
+
 
 /* Profile */
 .profile {
-  display: block;
+  position: relative;
   width: 420px;
   height: 420px;
-  border-radius: 16px;
+  border-radius: 50%; /* circular look */
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(255, 255, 255, 0.01)
-  );
-  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
+/* Profile Image */
 .profile img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: grayscale(10%) contrast(1.05) saturate(1.2); /* always active */
+  transition: transform 0.35s ease;
 }
+
+/* Hover effect (no filter change) */
+.profile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.profile:hover img {
+  transform: scale(1); /* zoom effect */
+}
+
 
 /* Sections */
 section {
@@ -257,11 +285,13 @@ p.muted {
   animation: scroll 18s linear infinite;
 }
 
+
 .skill-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 120px;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .skill-item img {
@@ -271,11 +301,29 @@ p.muted {
   border-radius: 12px;
   background: var(--glass);
   padding: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.skill-item:hover {
+  transform: translateY(-6px) scale(1.08);
+  filter: brightness(1.15);
+}
+
+.skill-item:hover img {
+  transform: rotate(5deg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 .skill-item span {
   margin-top: 10px;
   font-size: 13px;
+  transition: color 0.3s ease;
+}
+
+/* Highlight text on hover */
+.skill-item:hover span {
+  color: var(--accent); /* your accent yellow */
 }
 
 @keyframes scroll {
@@ -288,19 +336,139 @@ p.muted {
 }
 
 
-    /* Project Grid */
-.projects-grid {
+    .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 20px;
 }
 
 .project {
-  padding: 16px;
   border-radius: 12px;
   background: var(--glass-2);
-  border: 1px solid rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
+
+/* Project hover effect */
+.project:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.project img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 16px;
+  text-align: left;
+}
+
+.project h3 {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+.project p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.btn-view {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--accent, #FCA311);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-view:hover {
+  background: #e48f0d;
+}
+/* Modal background */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.6);
+  z-index: 1000;
+}
+
+/* Modal content */
+.modal-content {
+  background: var(--glass-2, #1e1e1e);
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  animation: popIn 0.3s ease;
+  position: relative;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-content h3 {
+  margin: 10px 0;
+  font-size: 22px;
+}
+
+.modal-content p {
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: #ccc;
+}
+
+.langs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.langs span {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: var(--accent, #FCA311);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Animation */
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+
 
     /* Contact */
 .contact-form {
@@ -355,6 +523,8 @@ textarea {
   cursor: pointer;
   font-weight: 600;
 }
+
+
 
 
     /* Footer */

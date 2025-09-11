@@ -11,6 +11,7 @@
 </head>
 <body>
   <nav class="nav">
+    
     <div class="nav-container">
       <div class="brand">
         <div class="logo">CJay.co <small>portfolio</small></div>
@@ -32,7 +33,7 @@
   <main>
     <section id="home" class="hero">
       <div class="hero-card intro">
-        <h1>Hi, I'm <span style="color:var(--muted)">CJay</span></h1>
+        <h1>Hi, I'm <span style="color:var(--muted)">Carlo Jay Gasmin</span></h1>
         <p class="lead">A passionate designer and frontend developer building clean, accessible, and modern user interfaces.</p>
 
         <div class="typing" aria-live="polite"> 
@@ -55,7 +56,7 @@
         </div>
       </div>
 
-      <div class="profile"><img src="img/prof.jpg" alt="Profile picture (replace prof.jpg)"/></div>
+      <div class="profile"><img src="img/prof.jpg" alt="Profile picture"/></div>
     </section>
 
     <section id="about">
@@ -79,6 +80,10 @@
             <div class="skill-item"><img src="img/php-brands-solid-full.svg" alt="PHP logo"><span>PHP</span></div>
             <div class="skill-item"><img src="img/database-solid-full.svg" alt="MySQL logo"><span>MySQL</span></div>
             <div class="skill-item"><img src="img/images.png" alt="C++ logo"><span>C++</span></div>
+            <div class="skill-item">
+  <img src="img/figma-brands-solid-full.svg" alt="Figma logo">
+  <span>Figma</span>
+</div>
 
             <!-- repeat -->
             <div class="skill-item"><img src="img/html5-brands-solid-full.svg" alt="HTML logo"><span>HTML</span></div>
@@ -87,7 +92,11 @@
             <div class="skill-item"><img src="img/java-brands-solid-full.svg" alt="Java logo"><span>Java</span></div>
             <div class="skill-item"><img src="img/php-brands-solid-full.svg" alt="PHP logo"><span>PHP</span></div>
             <div class="skill-item"><img src="img/database-solid-full.svg" alt="MySQL logo"><span>MySQL</span></div>
-            <div class="skill-item"><img src="img/download.png" alt="C++ logo"><span>C++</span></div>
+            <div class="skill-item"><img src="img/images.png" alt="C++ logo"><span>C++</span></div>
+            <div class="skill-item">
+  <img src="img/figma-brands-solid-full.svg" alt="Figma logo">
+  <span>Figma</span>
+</div>
 
           </div>
         </div>
@@ -96,30 +105,73 @@
       </div>
     </section>
 
+    
+
     <section id="projects">
-      <div class="section-card">
-        <h2 class="section-title">Projects</h2>
-        <div class="projects-grid" aria-live="polite">
-          <div class="project">
-            <h3 style="margin:6px 0 10px">Portfolio Website</h3>
-            <p class="muted">This site — built with modern HTML/CSS/JS. Smooth interactions and responsive layout.</p>
-          </div>
-          <div class="project">
-            <h3 style="margin:6px 0 10px">Page Replacement Simulator</h3>
-            <p class="muted">An educational simulator for FIFO and LRU algorithms (PHP + frontend UI).</p>
-          </div>
-          <div class="project">
-            <h3 style="margin:6px 0 10px">UI Component Library</h3>
-            <p class="muted">Reusable components and utility classes for fast prototyping.</p>
-          </div>
+  <div class="section-card">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-grid">
+      
+      <!-- Project 1 -->
+      <div class="project" data-title="Real Estate" 
+           data-desc="This site — built with modern HTML/CSS/JS. Smooth interactions and responsive layout." 
+           data-img="img/pr.png"
+           data-langs="Figma">
+        <img src="img/pr.png" alt="Real Estate">
+        <div class="project-content">
+          <h3>Real Estate</h3>
+          <p class="muted">Modern, responsive portfolio site.</p>
+          <span class="btn-view">View</span>
         </div>
       </div>
-    </section>
+
+      <!-- Project 2 -->
+      <div class="project" data-title="Page Replacement Simulator" 
+           data-desc="An educational simulator for FIFO and LRU algorithms (PHP + frontend UI)." 
+           data-img="img/page-simulator.png"
+           data-langs="PHP, JavaScript, CSS">
+        <img src="img/page-simulator.png" alt="Simulator">
+        <div class="project-content">
+          <h3>Page Replacement Simulator</h3>
+          <p class="muted">FIFO and LRU algorithm demo.</p>
+          <span class="btn-view">View</span>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project" data-title="UI Component Library" 
+           data-desc="Reusable components and utility classes for fast prototyping and building modern interfaces." 
+           data-img="img/ui-library.png"
+           data-langs="HTML, CSS, JavaScript">
+        <img src="img/ui-library.png" alt="UI Component Library">
+        <div class="project-content">
+          <h3>UI Component Library</h3>
+          <p class="muted">Reusable components for fast prototyping.</p>
+          <span class="btn-view">View</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Modal Popup -->
+<div id="project-modal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <img id="modal-img" src="" alt="Project Preview">
+    <h3 id="modal-title"></h3>
+    <p id="modal-desc"></p>
+    <div id="modal-langs" class="langs"></div>
+  </div>
+</div>
+
 
     <section id="contact">
   <div class="section-card">
     <h2 class="section-title">Contact</h2>
     <p class="muted">Have a project or just want to say hi? Fill the form and I'll get back to you.</p>
+    
 
     <form id="contactForm" class="contact-form" novalidate>
       <div class="field">
@@ -142,7 +194,8 @@
 
       <div style="display:flex;gap:12px;align-items:center">
         <button type="submit" class="btn">Send Message</button>
-        <div id="form-success" style="color:lightgreen;display:none">Message ready to send (demo)</div>
+        <div id="form-success" style="color:lightgreen;display:none">Message ready to send </div>
+        
       </div>
     </form>
   </div>
