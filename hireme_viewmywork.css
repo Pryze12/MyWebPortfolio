@@ -1,63 +1,50 @@
+/* Hire me and View Work button */
+.btn-hire {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 12px 28px;
+  border-radius: 12px;
+    background: linear-gradient(90deg, var(--accent), #3b82f6);
+
+ 
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-hire:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 135, 135, 0.4);  
+}
 /* Container below socials */
 .hero-buttons {
   display: flex;
   gap: 12px;           /* Space between buttons */
   margin-top: 16px;    /* Space below social icons */
   flex-wrap: wrap;      /* Wrap on small screens */
-  justify-content: center; /* Center align on all screens */
 }
 
-/* Base button styles */
+/* Medium style buttons */
 .btn-hire,
 .btn-view-work {
   display: inline-block;
-  padding: 10px 24px;         /* Medium size */
-  border-radius: 8px;         
-  font-size: 15px;            
+  padding: 8px 20px;          /* Medium size */
+  border-radius: 8px;         /* Slightly rounded */
+  font-size: 14px;            /* Medium text */
   font-weight: 600;
   text-decoration: none;
   color: #fff;
-  background: linear-gradient(90deg, var(--accent), #3b82f6);
+ background: linear-gradient(90deg, var(--accent), #3b82f6);
   transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-  text-align: center;
-  flex: 1 1 auto; /* Allow buttons to shrink/grow */
-  max-width: 180px; /* Prevent buttons from getting too wide */
 }
 
 /* Hover effect */
 .btn-hire:hover,
 .btn-view-work:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  background: linear-gradient(90deg, #3b82f6, var(--accent));
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  background-color: #2563eb;  /* Slightly darker on hover */
 }
 
-/* Tablet (stack buttons if tight space) */
-@media (max-width: 768px) {
-  .hero-buttons {
-    flex-direction: row;
-    justify-content: center;
-  }
-  .btn-hire,
-  .btn-view-work {
-    font-size: 14px;
-    padding: 8px 20px;
-    max-width: 160px;
-  }
-}
 
-/* Mobile (stack vertically) */
-@media (max-width: 480px) {
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .btn-hire,
-  .btn-view-work {
-    width: 100%;
-    max-width: 260px;
-    font-size: 13px;
-    padding: 10px 16px;
-  }
-}
+

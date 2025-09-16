@@ -34,8 +34,7 @@ document.addEventListener("DOMContentLoaded", function(){
   // Skills slider pause on hover
   (function(){
     const track = document.getElementById('slider-track');
-    if(track){  // safety check
-      
+    if(track){  
       track.addEventListener('mouseleave', ()=> track.style.animationPlayState='running');
     }
   })();
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function(){
   // Contact form validation
   (function(){
     const form = document.getElementById('contactForm');
-    if(!form) return; // safety check
+    if(!form) return; 
     const name = document.getElementById('name');
     const email = document.getElementById('email');
     const message = document.getElementById('message');
@@ -85,44 +84,69 @@ document.addEventListener("DOMContentLoaded", function(){
       },1500);
     });
   })();
+
+  // Project modal
   (function(){
-  const projects = document.querySelectorAll('.project');
-  const modal = document.getElementById('project-modal');
-  const modalImg = document.getElementById('modal-img');
-  const modalTitle = document.getElementById('modal-title');
-  const modalDesc = document.getElementById('modal-desc');
-  const modalLangs = document.getElementById('modal-langs');
-  const modalClose = document.querySelector('.modal-close');
+    const projects = document.querySelectorAll('.project');
+    const modal = document.getElementById('project-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalLangs = document.getElementById('modal-langs');
+    const modalClose = document.querySelector('.modal-close');
 
-  projects.forEach(project => {
-    project.addEventListener('click', () => {
-      modal.style.display = 'flex';
-      modalImg.src = project.dataset.img;
-      modalTitle.textContent = project.dataset.title;
-      modalDesc.textContent = project.dataset.desc;
+    if(!modal) return; // safety check
 
-      // Languages
-      modalLangs.innerHTML = '';
-      project.dataset.langs.split(',').forEach(lang => {
-        const span = document.createElement('span');
-        span.textContent = lang.trim();
-        modalLangs.appendChild(span);
+    projects.forEach(project => {
+      project.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = project.dataset.img;
+        modalTitle.textContent = project.dataset.title;
+        modalDesc.textContent = project.dataset.desc;
+
+        // Languages
+        modalLangs.innerHTML = '';
+        project.dataset.langs.split(',').forEach(lang => {
+          const span = document.createElement('span');
+          span.textContent = lang.trim();
+          modalLangs.appendChild(span);
+        });
       });
     });
-  });
 
-  modalClose.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  // Close modal when clicking outside
-  modal.addEventListener('click', (e) => {
-    if(e.target === modal){
+    modalClose.addEventListener('click', () => {
       modal.style.display = 'none';
-    }
-  });
-})();
+    });
 
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal){
+        modal.style.display = 'none';
+      }
+    });
+  })();
+
+  // Sidebar toggle (for mobile/tablet)
+  (function(){
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.querySelector('.close-btn');
+
+    if(hamburger && sidebar && closeBtn){
+      hamburger.addEventListener('click', () => {
+        sidebar.classList.add('active');
+      });
+
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+      });
+
+      // Close when clicking outside
+      window.addEventListener('click', (e) => {
+        if (e.target === sidebar) {
+          sidebar.classList.remove('active');
+        }
+      });
+    }
+  })();
 
 });
-

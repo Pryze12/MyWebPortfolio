@@ -3,23 +3,4 @@ footer {
   text-align: center;
   padding: 28px;
   color: rgba(229, 229, 229, 0.6);
-  font-size: 15px;
-  line-height: 1.5;
-  word-wrap: break-word;
-}
-
-/* Tablet */
-@media (max-width: 768px) {
-  footer {
-    padding: 20px;
-    font-size: 14px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-  footer {
-    padding: 16px;
-    font-size: 13px;
-  }
 }

@@ -66,3 +66,81 @@
   background: var(--glass);
   border: 1px solid rgba(255, 255, 255, 0.03);
 }
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 3px;
+  background: var(--muted);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -260px; /* hidden off-screen */
+  width: 240px;
+  height: 100vh;
+  background: rgba(11, 12, 16, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.6);
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: right 0.35s ease;
+  z-index: 100;
+}
+
+.sidebar a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background 0.25s, color 0.25s;
+}
+
+.sidebar a:hover {
+  background: var(--glass);
+  color: #fff;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+/* Responsive rules */
+@media (max-width: 980px) {
+  .nav-links {
+    display: none; /* hide desktop links */
+  }
+  .hamburger {
+    display: flex; /* show hamburger */
+  }
+}
+

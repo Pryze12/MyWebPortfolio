@@ -133,6 +133,7 @@
   }
 }
 
+
 /* Hover effect (no filter change) */
 .profile:hover {
   transform: scale(1.05);
@@ -141,4 +142,33 @@
 
 .profile:hover img {
   transform: scale(1); /* zoom effect */
+}
+/* Responsive */
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .profile {
+    width: 100%;
+    height: 320px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .nav-container {
+    padding: 12px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    display: none;
+  }
 }
